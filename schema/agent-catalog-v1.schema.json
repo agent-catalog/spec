@@ -1,0 +1,223 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agent-catalog.dev/schema/v1",
+  "title": "agent-catalog v1",
+  "description": "Origin-level umbrella manifest for agent-facing surfaces. See /home/atb/Code/llm-discovery-proxy/docs/superpowers/specs/2026-04-11-agent-catalog-design.md for the design rationale.",
+  "type": "object",
+  "required": ["agentCatalogVersion", "origin"],
+  "properties": {
+    "agentCatalogVersion": {
+      "type": "integer",
+      "const": 1,
+      "description": "Wire-format version. Always 1 for v1."
+    },
+    "origin": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://",
+      "description": "The HTTPS origin this catalog describes (scheme://host[:port], no path)."
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "publisher": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "url":  { "type": "string", "format": "uri" },
+        "contact": { "type": "string", "minLength": 1 }
+      },
+      "additionalProperties": true
+    },
+    "apis":   { "type": "array", "items": { "$ref": "#/$defs/apiEntry" } },
+    "mcps":   { "type": "array", "items": { "$ref": "#/$defs/mcpEntry" } },
+    "agents": { "type": "array", "items": { "$ref": "#/$defs/agentEntry" } },
+    "skills": { "type": "array", "items": { "$ref": "#/$defs/skillEntry" } },
+    "sdks":   { "type": "array", "items": { "$ref": "#/$defs/sdkEntry" } },
+    "docs":   { "type": "array", "items": { "$ref": "#/$defs/docEntry" } },
+    "auth": {
+      "type": "object",
+      "properties": {
+        "identity":      { "type": "array", "items": { "$ref": "#/$defs/authIdentityEntry" } },
+        "authorization": { "type": "array", "items": { "$ref": "#/$defs/authAuthorizationEntry" } }
+      },
+      "additionalProperties": false
+    },
+    "signature": {
+      "oneOf": [
+        { "type": "null" },
+        { "$ref": "#/$defs/signatureEnvelope" }
+      ]
+    }
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "commonEntryFields": {
+      "type": "object",
+      "required": ["id", "name", "description"],
+      "properties": {
+        "id":          { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$" },
+        "name":        { "type": "string", "minLength": 1, "maxLength": 200 },
+        "description": { "type": "string", "minLength": 1 },
+        "whenToUse":   { "type": "string" },
+        "hash":        { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+        "tags":        { "type": "array", "items": { "type": "string" } },
+        "requires": {
+          "type": "object",
+          "properties": {
+            "identity":      { "type": "string" },
+            "authorization": { "type": "string" }
+          },
+          "additionalProperties": false
+        }
+      }
+    },
+    "apiEntry": {
+      "allOf": [
+        { "$ref": "#/$defs/commonEntryFields" },
+        {
+          "type": "object",
+          "required": ["format", "url"],
+          "properties": {
+            "format": {
+              "type": "string",
+              "enum": ["openapi", "asyncapi", "graphql", "grpc", "api-catalog"]
+            },
+            "url": { "type": "string", "format": "uri", "pattern": "^https://" }
+          }
+        }
+      ]
+    },
+    "mcpEntry": {
+      "allOf": [
+        { "$ref": "#/$defs/commonEntryFields" },
+        {
+          "type": "object",
+          "required": ["transport"],
+          "properties": {
+            "transport": { "type": "string", "enum": ["stdio", "http", "sse"] },
+            "url":     { "type": "string", "format": "uri", "pattern": "^https://" },
+            "command": { "type": "string" },
+            "args":    { "type": "array", "items": { "type": "string" } },
+            "install": {
+              "type": "object",
+              "additionalProperties": { "type": "string" }
+            },
+            "card": { "type": "string", "format": "uri", "pattern": "^https://" }
+          },
+          "anyOf": [
+            { "required": ["url"] },
+            { "required": ["command"] }
+          ]
+        }
+      ]
+    },
+    "agentEntry": {
+      "allOf": [
+        { "$ref": "#/$defs/commonEntryFields" },
+        {
+          "type": "object",
+          "required": ["card"],
+          "properties": {
+            "card": { "type": "string", "format": "uri", "pattern": "^https://" }
+          }
+        }
+      ]
+    },
+    "skillEntry": {
+      "allOf": [
+        { "$ref": "#/$defs/commonEntryFields" },
+        {
+          "type": "object",
+          "required": ["source", "pinned"],
+          "properties": {
+            "source": { "type": "string", "minLength": 1 },
+            "pinned": { "type": "boolean" },
+            "commit": { "type": "string", "pattern": "^[a-f0-9]{7,40}$" }
+          },
+          "allOf": [
+            {
+              "if":   { "properties": { "pinned": { "const": false } } },
+              "then": { "not": { "required": ["hash"] } }
+            },
+            {
+              "if":   { "properties": { "pinned": { "const": true } } },
+              "then": { "required": ["commit"] }
+            }
+          ]
+        }
+      ]
+    },
+    "sdkEntry": {
+      "allOf": [
+        { "$ref": "#/$defs/commonEntryFields" },
+        {
+          "type": "object",
+          "required": ["language", "package"],
+          "properties": {
+            "language": { "type": "string", "minLength": 1 },
+            "package": {
+              "type": "string",
+              "pattern": "^(npm|pypi|cargo|gomod|gem|maven|nuget|composer):[^\\s]+$"
+            },
+            "docs": { "type": "string", "format": "uri" }
+          }
+        }
+      ]
+    },
+    "docEntry": {
+      "allOf": [
+        { "$ref": "#/$defs/commonEntryFields" },
+        {
+          "type": "object",
+          "required": ["url"],
+          "properties": {
+            "url":     { "type": "string", "format": "uri", "pattern": "^https://" },
+            "tokens":  { "type": "integer", "minimum": 0 },
+            "purpose": { "type": "string" }
+          }
+        }
+      ]
+    },
+    "authIdentityEntry": {
+      "type": "object",
+      "required": ["id", "scheme", "description"],
+      "properties": {
+        "id":          { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$" },
+        "name":        { "type": "string" },
+        "description": { "type": "string", "minLength": 1 },
+        "scheme":      { "type": "string", "minLength": 1 },
+        "keyDirectoryUrl": { "type": "string", "format": "uri", "pattern": "^https://" }
+      },
+      "additionalProperties": true
+    },
+    "authAuthorizationEntry": {
+      "type": "object",
+      "required": ["id", "scheme", "description"],
+      "properties": {
+        "id":          { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{0,63}$" },
+        "name":        { "type": "string" },
+        "description": { "type": "string", "minLength": 1 },
+        "scheme":      { "type": "string", "minLength": 1 },
+        "metadataUrl": { "type": "string", "format": "uri", "pattern": "^https://" },
+        "header":      { "type": "string" },
+        "obtainAt":    { "type": "string", "format": "uri" }
+      },
+      "additionalProperties": true
+    },
+    "signatureEnvelope": {
+      "type": "object",
+      "required": ["scheme"],
+      "properties": {
+        "scheme": { "type": "string", "enum": ["sigstore", "pgp", "minisign"] }
+      },
+      "additionalProperties": true
+    }
+  }
+}
