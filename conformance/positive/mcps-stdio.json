@@ -1,0 +1,18 @@
+{
+  "agentCatalogVersion": 1,
+  "origin": "https://example.com",
+  "mcps": [
+    {
+      "id": "filesystem-mcp",
+      "name": "Filesystem MCP",
+      "description": "Reads and writes files in the workspace.",
+      "transport": "stdio",
+      "command": "acme-mcp-fs",
+      "args": ["--root", "/workspace"],
+      "install": {
+        "npm": "@acme/mcp-filesystem@^1.2.0",
+        "pypi": "acme-mcp-filesystem>=1.2,<2"
+      }
+    }
+  ]
+}

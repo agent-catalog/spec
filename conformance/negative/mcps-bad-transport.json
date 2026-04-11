@@ -1,0 +1,13 @@
+{
+  "agentCatalogVersion": 1,
+  "origin": "https://example.com",
+  "mcps": [
+    {
+      "id": "weird-mcp",
+      "name": "Weird",
+      "description": "Transport not in enum.",
+      "transport": "websocket",
+      "url": "https://example.com/mcp"
+    }
+  ]
+}

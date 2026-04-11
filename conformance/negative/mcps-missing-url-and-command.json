@@ -1,0 +1,12 @@
+{
+  "agentCatalogVersion": 1,
+  "origin": "https://example.com",
+  "mcps": [
+    {
+      "id": "broken-mcp",
+      "name": "Broken",
+      "description": "Has transport but no url and no command.",
+      "transport": "http"
+    }
+  ]
+}

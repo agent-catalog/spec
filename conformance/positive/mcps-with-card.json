@@ -1,0 +1,14 @@
+{
+  "agentCatalogVersion": 1,
+  "origin": "https://example.com",
+  "mcps": [
+    {
+      "id": "search-mcp",
+      "name": "Acme search",
+      "description": "Search the Acme product catalog. Full metadata via SEP-1649 card.",
+      "transport": "http",
+      "url": "https://mcp.example.com/search",
+      "card": "https://mcp.example.com/.well-known/mcp.json"
+    }
+  ]
+}

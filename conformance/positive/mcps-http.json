@@ -1,0 +1,13 @@
+{
+  "agentCatalogVersion": 1,
+  "origin": "https://example.com",
+  "mcps": [
+    {
+      "id": "search-mcp",
+      "name": "Acme search",
+      "description": "Search the Acme product catalog.",
+      "transport": "http",
+      "url": "https://mcp.example.com/search"
+    }
+  ]
+}
