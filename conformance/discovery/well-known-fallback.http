@@ -1,0 +1,16 @@
+# Scenario: No Link header on any prior response; agent falls back to /.well-known/agent-catalog.json.
+# Expected outcome: agent fetches /.well-known/agent-catalog.json from the origin.
+
+### Initial request
+GET https://example.com/some/page HTTP/1.1
+Accept: text/html
+
+### Response (no Link header)
+HTTP/1.1 200 OK
+Content-Type: text/html
+
+<html>...</html>
+
+### Agent fallback request
+GET https://example.com/.well-known/agent-catalog.json HTTP/1.1
+Accept: application/json

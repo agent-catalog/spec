@@ -1,0 +1,16 @@
+# Scenario: Catalog is advertised over plain HTTP. Agent MUST refuse.
+# Expected outcome: agent does NOT fetch the catalog and reports the violation.
+
+### Request hits a plain-HTTP origin
+GET http://example.com/some/page HTTP/1.1
+Accept: text/html
+
+### Response includes a catalog Link header
+HTTP/1.1 200 OK
+Content-Type: text/html
+Link: <http://example.com/agent-catalog.json>; rel="agent-catalog"
+
+<html>...</html>
+
+### Agent MUST NOT make this request
+# (no further requests; the agent reports "agent-catalog advertised over plain HTTP, refused")

@@ -1,0 +1,18 @@
+# Scenario: Link header is present, well-known URL also resolves; agent MUST use the header.
+# Expected outcome: agent fetches https://example.com/agent-catalog.json (from the header), NOT /.well-known/agent-catalog.json.
+
+### Initial request to any URL on the origin
+GET https://example.com/some/page HTTP/1.1
+Accept: text/html
+
+### Response (the publisher includes a Link header)
+HTTP/1.1 200 OK
+Content-Type: text/html
+Link: <https://example.com/agent-catalog.json>; rel="agent-catalog"
+Cache-Control: max-age=300
+
+<html>...</html>
+
+### Agent next request (using the URL from the Link header)
+GET https://example.com/agent-catalog.json HTTP/1.1
+Accept: application/json
