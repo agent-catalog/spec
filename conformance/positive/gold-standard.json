@@ -1,0 +1,113 @@
+{
+  "agentCatalogVersion": 1,
+  "origin": "https://acme.example",
+  "name": "Acme Corp",
+  "description": "Acme exposes billing and support APIs, two MCP servers, two A2A agents, and an installable agent-skill library.",
+  "publisher": {
+    "name": "Acme Inc.",
+    "url": "https://acme.example",
+    "contact": "agents@acme.example"
+  },
+  "apis": [
+    {
+      "id": "billing-api",
+      "name": "Billing API",
+      "description": "Query and modify customer billing state, invoices, and payment methods.",
+      "format": "openapi",
+      "url": "https://acme.example/openapi.yaml",
+      "hash": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+      "requires": { "identity": "web-bot-auth-main", "authorization": "oauth-main" }
+    },
+    {
+      "id": "all-apis",
+      "name": "All Acme APIs",
+      "description": "RFC 9727 api-catalog indexing every Acme API.",
+      "format": "api-catalog",
+      "url": "https://acme.example/.well-known/api-catalog"
+    }
+  ],
+  "mcps": [
+    {
+      "id": "search-mcp",
+      "name": "Acme search",
+      "description": "Search Acme's product catalog and knowledge base.",
+      "transport": "http",
+      "url": "https://mcp.acme.example/search",
+      "card": "https://mcp.acme.example/.well-known/mcp.json",
+      "requires": { "authorization": "oauth-main" }
+    },
+    {
+      "id": "filesystem-mcp",
+      "name": "Filesystem MCP",
+      "description": "Reads and writes files in the workspace.",
+      "transport": "stdio",
+      "command": "acme-mcp-fs",
+      "args": ["--root", "/workspace"],
+      "install": {
+        "npm": "@acme/mcp-filesystem@^1.2.0",
+        "pypi": "acme-mcp-filesystem>=1.2,<2"
+      }
+    }
+  ],
+  "agents": [
+    {
+      "id": "support-agent",
+      "name": "Acme support",
+      "description": "Handles tier-1 customer support inquiries via A2A.",
+      "card": "https://acme.example/agents/support/.well-known/agent-card.json"
+    }
+  ],
+  "skills": [
+    {
+      "id": "billing-helper",
+      "name": "billing-helper",
+      "description": "Use this when the user asks to look up an Acme invoice or update a payment method.",
+      "source": "acmecorp/agent-skills/tree/abc123def456/skills/billing-helper",
+      "pinned": true,
+      "commit": "abc123def456",
+      "hash": "sha256:2222222222222222222222222222222222222222222222222222222222222222"
+    }
+  ],
+  "sdks": [
+    {
+      "id": "ts-client",
+      "name": "@acme/client",
+      "description": "Official Acme TypeScript client.",
+      "language": "typescript",
+      "package": "npm:@acme/client@^2.0.0",
+      "docs": "https://acme.example/sdk/typescript"
+    }
+  ],
+  "docs": [
+    {
+      "id": "rate-limits",
+      "name": "Rate limit policy",
+      "description": "Acme's per-tier rate limits, retry behavior, and 429 response shape.",
+      "whenToUse": "Read this if you receive a 429 from any Acme API.",
+      "url": "https://acme.example/docs/rate-limits.md",
+      "tokens": 1200,
+      "purpose": "rate-limits"
+    }
+  ],
+  "auth": {
+    "identity": [
+      {
+        "id": "web-bot-auth-main",
+        "name": "Web Bot Auth",
+        "scheme": "web-bot-auth",
+        "description": "Acme accepts agent identity via Web Bot Auth.",
+        "keyDirectoryUrl": "https://acme.example/.well-known/web-bot-auth"
+      }
+    ],
+    "authorization": [
+      {
+        "id": "oauth-main",
+        "name": "OAuth 2.0",
+        "scheme": "oauth2",
+        "description": "Use the authorization-code flow for user-scoped access.",
+        "metadataUrl": "https://acme.example/.well-known/oauth-authorization-server"
+      }
+    ]
+  },
+  "signature": null
+}
