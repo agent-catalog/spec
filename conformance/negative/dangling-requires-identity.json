@@ -1,0 +1,14 @@
+{
+  "agentCatalogVersion": 1,
+  "origin": "https://example.com",
+  "apis": [
+    {
+      "id": "api1",
+      "name": "API 1",
+      "description": "References an identity scheme that doesn't exist.",
+      "format": "openapi",
+      "url": "https://example.com/openapi.yaml",
+      "requires": { "identity": "ghost" }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "agentCatalogVersion": 1,
+  "origin": "https://example.com",
+  "mcps": [
+    {
+      "id": "mcp1",
+      "name": "MCP 1",
+      "description": "References an authorization scheme that doesn't exist.",
+      "transport": "http",
+      "url": "https://mcp.example.com/x",
+      "requires": { "authorization": "ghost" }
+    }
+  ]
+}
