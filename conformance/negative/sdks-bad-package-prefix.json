@@ -1,0 +1,13 @@
+{
+  "agentCatalogVersion": 1,
+  "origin": "https://example.com",
+  "sdks": [
+    {
+      "id": "weird-client",
+      "name": "weird",
+      "description": "Package manager prefix not in the allowlist.",
+      "language": "weird",
+      "package": "snake-oil:acme@1.0"
+    }
+  ]
+}

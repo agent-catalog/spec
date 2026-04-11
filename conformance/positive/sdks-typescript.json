@@ -1,0 +1,14 @@
+{
+  "agentCatalogVersion": 1,
+  "origin": "https://example.com",
+  "sdks": [
+    {
+      "id": "ts-client",
+      "name": "@acme/client",
+      "description": "Official Acme TypeScript client.",
+      "language": "typescript",
+      "package": "npm:@acme/client@^2.0.0",
+      "docs": "https://example.com/sdk/typescript"
+    }
+  ]
+}

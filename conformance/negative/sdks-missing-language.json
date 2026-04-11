@@ -1,0 +1,12 @@
+{
+  "agentCatalogVersion": 1,
+  "origin": "https://example.com",
+  "sdks": [
+    {
+      "id": "broken",
+      "name": "broken",
+      "description": "No language field.",
+      "package": "npm:@acme/client@^2.0.0"
+    }
+  ]
+}

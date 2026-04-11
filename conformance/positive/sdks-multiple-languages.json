@@ -1,0 +1,27 @@
+{
+  "agentCatalogVersion": 1,
+  "origin": "https://example.com",
+  "sdks": [
+    {
+      "id": "ts-client",
+      "name": "@acme/client",
+      "description": "TypeScript client.",
+      "language": "typescript",
+      "package": "npm:@acme/client@^2.0.0"
+    },
+    {
+      "id": "py-client",
+      "name": "acme-client",
+      "description": "Python client.",
+      "language": "python",
+      "package": "pypi:acme-client>=2.0,<3"
+    },
+    {
+      "id": "rust-client",
+      "name": "acme",
+      "description": "Rust client.",
+      "language": "rust",
+      "package": "cargo:acme@2.0"
+    }
+  ]
+}
