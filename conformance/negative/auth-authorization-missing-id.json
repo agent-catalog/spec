@@ -1,0 +1,12 @@
+{
+  "agentCatalogVersion": 1,
+  "origin": "https://example.com",
+  "auth": {
+    "authorization": [
+      {
+        "scheme": "api-key",
+        "description": "No id field."
+      }
+    ]
+  }
+}

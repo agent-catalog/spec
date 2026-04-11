@@ -1,0 +1,20 @@
+{
+  "agentCatalogVersion": 1,
+  "origin": "https://example.com",
+  "auth": {
+    "identity": [
+      {
+        "id": "anon",
+        "scheme": "anonymous",
+        "description": "Public read-only endpoints accept anonymous calls."
+      }
+    ],
+    "authorization": [
+      {
+        "id": "none",
+        "scheme": "none",
+        "description": "No authorization required beyond the identity check."
+      }
+    ]
+  }
+}

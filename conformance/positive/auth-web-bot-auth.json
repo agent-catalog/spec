@@ -1,0 +1,15 @@
+{
+  "agentCatalogVersion": 1,
+  "origin": "https://example.com",
+  "auth": {
+    "identity": [
+      {
+        "id": "web-bot-auth-main",
+        "name": "Web Bot Auth",
+        "scheme": "web-bot-auth",
+        "description": "Acme accepts agent identity via Web Bot Auth.",
+        "keyDirectoryUrl": "https://example.com/.well-known/web-bot-auth"
+      }
+    ]
+  }
+}

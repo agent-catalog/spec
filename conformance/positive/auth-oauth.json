@@ -1,0 +1,15 @@
+{
+  "agentCatalogVersion": 1,
+  "origin": "https://example.com",
+  "auth": {
+    "authorization": [
+      {
+        "id": "oauth-main",
+        "name": "OAuth 2.0",
+        "scheme": "oauth2",
+        "description": "Use the authorization-code flow for user-scoped access.",
+        "metadataUrl": "https://example.com/.well-known/oauth-authorization-server"
+      }
+    ]
+  }
+}
