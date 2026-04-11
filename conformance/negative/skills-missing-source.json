@@ -1,0 +1,13 @@
+{
+  "agentCatalogVersion": 1,
+  "origin": "https://example.com",
+  "skills": [
+    {
+      "id": "broken",
+      "name": "broken",
+      "description": "No source field.",
+      "pinned": true,
+      "commit": "abc1234"
+    }
+  ]
+}

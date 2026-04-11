@@ -1,0 +1,15 @@
+{
+  "agentCatalogVersion": 1,
+  "origin": "https://example.com",
+  "skills": [
+    {
+      "id": "billing-helper",
+      "name": "billing-helper",
+      "description": "Use this when the user asks to look up an Acme invoice.",
+      "source": "acmecorp/agent-skills/tree/abc123def456/skills/billing-helper",
+      "pinned": true,
+      "commit": "abc123def456",
+      "hash": "sha256:0011223344556677889900112233445566778899001122334455667788990011"
+    }
+  ]
+}

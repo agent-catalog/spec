@@ -1,0 +1,14 @@
+{
+  "agentCatalogVersion": 1,
+  "origin": "https://example.com",
+  "skills": [
+    {
+      "id": "billing-helper",
+      "name": "billing-helper",
+      "description": "Unpinned but carries a hash, which the spec forbids.",
+      "source": "acmecorp/agent-skills",
+      "pinned": false,
+      "hash": "sha256:0011223344556677889900112233445566778899001122334455667788990011"
+    }
+  ]
+}

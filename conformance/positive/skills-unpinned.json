@@ -1,0 +1,13 @@
+{
+  "agentCatalogVersion": 1,
+  "origin": "https://example.com",
+  "skills": [
+    {
+      "id": "billing-helper",
+      "name": "billing-helper",
+      "description": "Moving-ref skill; cautious agents may refuse.",
+      "source": "acmecorp/agent-skills",
+      "pinned": false
+    }
+  ]
+}

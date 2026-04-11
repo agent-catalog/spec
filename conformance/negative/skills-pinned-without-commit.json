@@ -1,0 +1,13 @@
+{
+  "agentCatalogVersion": 1,
+  "origin": "https://example.com",
+  "skills": [
+    {
+      "id": "billing-helper",
+      "name": "billing-helper",
+      "description": "Pinned but no commit field.",
+      "source": "acmecorp/agent-skills/tree/abc123def456/skills/billing-helper",
+      "pinned": true
+    }
+  ]
+}
