@@ -1,0 +1,13 @@
+{
+  "agentCatalogVersion": 1,
+  "origin": "https://example.com",
+  "agents": [
+    {
+      "id": "support-agent",
+      "name": "Acme support",
+      "description": "Handles tier-1 customer support inquiries via A2A.",
+      "card": "https://example.com/agents/support/.well-known/agent-card.json",
+      "hash": "sha256:fedcba9876543210fedcba9876543210fedcba9876543210fedcba9876543210"
+    }
+  ]
+}

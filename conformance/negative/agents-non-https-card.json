@@ -1,0 +1,12 @@
+{
+  "agentCatalogVersion": 1,
+  "origin": "https://example.com",
+  "agents": [
+    {
+      "id": "insecure-agent",
+      "name": "Insecure",
+      "description": "Card URL is HTTP.",
+      "card": "http://example.com/agents/x/.well-known/agent-card.json"
+    }
+  ]
+}

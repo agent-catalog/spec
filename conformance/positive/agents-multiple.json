@@ -1,0 +1,18 @@
+{
+  "agentCatalogVersion": 1,
+  "origin": "https://example.com",
+  "agents": [
+    {
+      "id": "billing-agent",
+      "name": "Acme billing",
+      "description": "Handles invoice and payment questions via A2A.",
+      "card": "https://example.com/agents/billing/.well-known/agent-card.json"
+    },
+    {
+      "id": "support-agent",
+      "name": "Acme support",
+      "description": "Handles tier-1 customer support inquiries via A2A.",
+      "card": "https://example.com/agents/support/.well-known/agent-card.json"
+    }
+  ]
+}

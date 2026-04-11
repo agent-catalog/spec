@@ -1,0 +1,11 @@
+{
+  "agentCatalogVersion": 1,
+  "origin": "https://example.com",
+  "agents": [
+    {
+      "id": "broken-agent",
+      "name": "Broken",
+      "description": "No card field."
+    }
+  ]
+}
