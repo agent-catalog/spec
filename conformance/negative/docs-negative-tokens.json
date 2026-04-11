@@ -1,0 +1,13 @@
+{
+  "agentCatalogVersion": 1,
+  "origin": "https://example.com",
+  "docs": [
+    {
+      "id": "weird",
+      "name": "weird",
+      "description": "Negative token count.",
+      "url": "https://example.com/docs/x.md",
+      "tokens": -5
+    }
+  ]
+}

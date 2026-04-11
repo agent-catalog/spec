@@ -1,0 +1,15 @@
+{
+  "agentCatalogVersion": 1,
+  "origin": "https://example.com",
+  "docs": [
+    {
+      "id": "rate-limits",
+      "name": "Rate limit policy",
+      "description": "Acme's per-tier rate limits, retry behavior, and 429 response shape.",
+      "whenToUse": "Read this if you receive a 429 from any Acme API.",
+      "url": "https://example.com/docs/rate-limits.md",
+      "tokens": 1200,
+      "purpose": "rate-limits"
+    }
+  ]
+}

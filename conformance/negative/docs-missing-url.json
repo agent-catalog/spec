@@ -1,0 +1,11 @@
+{
+  "agentCatalogVersion": 1,
+  "origin": "https://example.com",
+  "docs": [
+    {
+      "id": "broken",
+      "name": "broken",
+      "description": "No url."
+    }
+  ]
+}

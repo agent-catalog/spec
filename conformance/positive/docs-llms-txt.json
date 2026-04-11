@@ -1,0 +1,13 @@
+{
+  "agentCatalogVersion": 1,
+  "origin": "https://example.com",
+  "docs": [
+    {
+      "id": "llms-txt",
+      "name": "llms.txt index",
+      "description": "Acme's full documentation index in llms.txt format.",
+      "url": "https://example.com/llms.txt",
+      "purpose": "index"
+    }
+  ]
+}
