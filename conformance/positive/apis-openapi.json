@@ -1,0 +1,14 @@
+{
+  "agentCatalogVersion": 1,
+  "origin": "https://example.com",
+  "apis": [
+    {
+      "id": "billing-api",
+      "name": "Billing API",
+      "description": "Query and modify customer billing state.",
+      "format": "openapi",
+      "url": "https://example.com/openapi.yaml",
+      "hash": "sha256:0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
+    }
+  ]
+}

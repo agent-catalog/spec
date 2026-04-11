@@ -1,0 +1,13 @@
+{
+  "agentCatalogVersion": 1,
+  "origin": "https://example.com",
+  "apis": [
+    {
+      "id": "all-apis",
+      "name": "Acme APIs",
+      "description": "All Acme APIs, indexed via RFC 9727 api-catalog.",
+      "format": "api-catalog",
+      "url": "https://example.com/.well-known/api-catalog"
+    }
+  ]
+}

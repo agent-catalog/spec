@@ -1,0 +1,13 @@
+{
+  "agentCatalogVersion": 1,
+  "origin": "https://example.com",
+  "apis": [
+    {
+      "id": "insecure-api",
+      "name": "Insecure API",
+      "description": "URL is plain HTTP.",
+      "format": "openapi",
+      "url": "http://example.com/openapi.yaml"
+    }
+  ]
+}

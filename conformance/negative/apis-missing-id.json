@@ -1,0 +1,12 @@
+{
+  "agentCatalogVersion": 1,
+  "origin": "https://example.com",
+  "apis": [
+    {
+      "name": "Billing API",
+      "description": "Missing id field.",
+      "format": "openapi",
+      "url": "https://example.com/openapi.yaml"
+    }
+  ]
+}

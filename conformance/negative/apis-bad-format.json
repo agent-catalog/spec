@@ -1,0 +1,13 @@
+{
+  "agentCatalogVersion": 1,
+  "origin": "https://example.com",
+  "apis": [
+    {
+      "id": "weird-api",
+      "name": "Weird API",
+      "description": "Format not in the enum.",
+      "format": "soap",
+      "url": "https://example.com/wsdl"
+    }
+  ]
+}
