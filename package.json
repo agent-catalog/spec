@@ -1,0 +1,21 @@
+{
+  "name": "@agent-catalog/schema",
+  "version": "1.0.0-alpha.0",
+  "type": "module",
+  "description": "The canonical JSON Schema for agent-catalog v1",
+  "license": "Apache-2.0",
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./src/index.js"
+    },
+    "./schema.json": "./schema/agent-catalog-v1.schema.json"
+  },
+  "files": [
+    "schema/agent-catalog-v1.schema.json",
+    "src/index.js",
+    "src/index.d.ts"
+  ]
+}
